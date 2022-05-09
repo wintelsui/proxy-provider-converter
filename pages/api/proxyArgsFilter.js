@@ -47,7 +47,7 @@ module.exports = async (req, res) => {
   let filterCountrys = country.split(',')
   let proxiesNew = []
 
-  filterTypes = _.intersection(filterTypes, ["ss", "vmess", "trojan", "ssr"]);
+  filterTypes = arrayA.filter(value => ["ss", "vmess", "trojan", "ssr"].indexOf(value) !== -1);
 
   let proxiesOri = config.proxies
   if (proxiesOri.length > 0) {
