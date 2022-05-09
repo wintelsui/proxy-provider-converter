@@ -47,7 +47,8 @@ module.exports = async (req, res) => {
   let filterCountrys = country.split(',')
   let proxiesNew = []
 
-  filterTypes = arrayA.filter(value => ["ss", "vmess", "trojan", "ssr"].indexOf(value) !== -1);
+  // filterTypes = filterTypes.filter(value => ["ss", "vmess", "trojan", "ssr"].indexOf(value) !== -1);
+  console.log(`filterTypes: ${JSON.stringify(filterTypes)}, filterCountrys: ${JSON.stringify(filterCountrys)}`);
 
   let proxiesOri = config.proxies
   if (proxiesOri.length > 0) {
