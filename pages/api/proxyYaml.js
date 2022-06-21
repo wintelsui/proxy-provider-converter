@@ -29,6 +29,11 @@ module.exports = async (req, res) => {
     return;
   }
 
+
+  const responseOri = YAML.stringify(configFile);
+  res.status(200).send(responseOri);
+  return;
+  
   console.log(`Parsing YAML`);
   let config = null;
   try {
