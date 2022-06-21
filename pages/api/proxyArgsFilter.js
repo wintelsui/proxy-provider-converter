@@ -5,6 +5,7 @@ module.exports = async (req, res) => {
   const url = req.query.url;
   const type = req.query.type || req.query.t || '';
   const country = req.query.country || req.query.c || '';
+  const countryKey = req.query.countryKey || req.query.ck || '';
   const filterncountry = req.query.filterncountry || req.query.fnc || '';
 
   console.log(`query: ${JSON.stringify(req.query)}`);
@@ -71,10 +72,14 @@ module.exports = async (req, res) => {
         // "type":"trojan","country":"🏁ZZ"
         // console.log(item)
         let itemType = item.type || ''
-        let itemCountry = item.country || ''
+        let itemCountry = item.country || item.name || ''
         let intype = false
         let incountry = false
         let inNcountry = false
+
+        if (itemCountry == '' && countryKey != '') {
+          itemCountry = item[countryKey]
+        }
 
         if (filterTypesLength > 0) {
           for (let s of filterTypes) {
