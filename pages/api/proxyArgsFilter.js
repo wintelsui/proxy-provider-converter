@@ -44,17 +44,23 @@ module.exports = async (req, res) => {
     return;
   }
 
-  let filterTypes = type.split(',')
-  let filterCountrys = country.split(',')
-  let filterNCountrys = filterncountry.split(',')
+  let filterTypes = type.length > 0 ? type.split(',') : []
+  let filterCountrys = country.length > 0 ? country.split(',') : []
+  let filterNCountrys = filterncountry.length > 0 ? filterncountry.split(',') : []
   
   let proxiesNew = []
 
   // filterTypes = filterTypes.filter(value => ["ss", "vmess", "trojan", "ssr"].indexOf(value) !== -1);
-  console.log(`filterTypes: ${JSON.stringify(filterTypes)}, filterCountrys: ${JSON.stringify(filterCountrys)}`);
-
+  console.log(`filterTypes-${filterTypes.length} : ${JSON.stringify(filterTypes)}, filterCountrys-${filterCountrys.length}: ${JSON.stringify(filterCountrys)}, filterNCountrys-${filterNCountrys.length }:${JSON.stringify(filterNCountrys)}`);
+  
   let proxiesOri = config.proxies
+  try {
+    console.log(`proxiesOri@${proxiesOri.length}`)
+  } catch (error) {
+    console.log(`proxiesOri@error`, error)
+  }
   if (proxiesOri.length > 0) {
+
     let filterTypesLength = filterTypes.length
     let filterCountrysLength = filterCountrys.length
     let filterNCountrysLength = filterNCountrys.length
@@ -107,6 +113,7 @@ module.exports = async (req, res) => {
       }
     } else {
       proxiesNew = proxiesOri
+      console.log(`proxies@不过滤`)
     }
   }
 
