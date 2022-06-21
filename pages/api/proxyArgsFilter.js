@@ -94,7 +94,7 @@ module.exports = async (req, res) => {
 
         if (filterNCountrysLength > 0) {
           for (let s of filterNCountrys) {
-            if (itemNCountry.indexOf(s) > -1) {
+            if (itemCountry.indexOf(s) > -1) {
               inNcountry = true
               break
             }

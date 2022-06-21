@@ -30,10 +30,10 @@ module.exports = async (req, res) => {
   }
 
 
-  const responseOri = YAML.stringify(configFile);
-  res.status(200).send(responseOri);
+  // const responseOri = YAML.stringify(configFile);
+  res.status(200).send(configFile);
   return;
-  
+
   console.log(`Parsing YAML`);
   let config = null;
   try {
@@ -99,7 +99,7 @@ module.exports = async (req, res) => {
 
         if (filterNCountrysLength > 0) {
           for (let s of filterNCountrys) {
-            if (itemNCountry.indexOf(s) > -1) {
+            if (itemCountry.indexOf(s) > -1) {
               inNcountry = true
               break
             }
